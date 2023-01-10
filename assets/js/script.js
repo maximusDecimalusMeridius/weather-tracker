@@ -32,14 +32,7 @@ _ui.addEventListener("click", (event) => {
         //Add search to search history and local storage
         //If search history length == 10, pop() the last value off
         if(event.target.id == "submit-button"){
-            getWeather(_searchInput.value);
-            pastSearchArray.unshift(_searchInput.value);
-            if(pastSearchArray.length > 10){
-                pastSearchArray.pop();
-            }
-            _searchInput.value = "";
-            localStorage.setItem("pastSearches", JSON.stringify(pastSearchArray));
-            populateSearchHistory();
+            getWeather(_searchInput.value.trim());
         }
     }
     //Search past city but don't add to search history since it already exists
@@ -68,12 +61,21 @@ function getWeather(city){
         throw new Error("The city you entered was not found");
     })
     .then(data => {
+        if(pastSearchArray.find(city => city == _searchInput.value) == undefined){
+            pastSearchArray.unshift(_searchInput.value);
+            if(pastSearchArray.length > 10){
+                pastSearchArray.pop();
+            }
+        }
+        _searchInput.value = "";
+        localStorage.setItem("pastSearches", JSON.stringify(pastSearchArray));
+        populateSearchHistory();
         displayWeather(data);
         populateFiveDay(data);
     })
     .catch(error => {
         console.log(error);
-        alert("City not found, please try again!");
+        alert("City not found, please try again or attempt a different spelling!");
     })
 }
 
@@ -162,3 +164,4 @@ function populateSearchHistory(){
 }
 
 populateSearchHistory();
+_searchInput.value = "";
