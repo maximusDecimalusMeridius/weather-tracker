@@ -39,8 +39,12 @@ header {
 }
 
 main {
+    height: 900px;
+    width: 80%;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 300px minmax(auto, 800px);
+    grid-template-rows: 150px 250px;
     grid-template-areas:
                         "ui city-results"
                         "ui five-day"
@@ -55,7 +59,6 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items:
 }
 
 #input-container{
@@ -95,12 +98,36 @@ main {
 
 #city-results {
     grid-area: city-results;
+    height: 150px;
+}
+
+.city-detail {
+    height: 2rem;
+    width: 150px;
+    margin-bottom: 5px;
+    padding: 3px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
 }
 
 #five-day {
     grid-area: five-day;
+    height: fit-content;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.five-day-card {
+    height: 175px;
+    width: 150px;
 }
 
 footer{
     display: none;
+    height: 250px;
 }
