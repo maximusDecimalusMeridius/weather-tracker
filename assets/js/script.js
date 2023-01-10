@@ -61,10 +61,19 @@ if(localStorage.getItem("pastSearches") != ""){
 //Displays weather and updated 5-day forecast
 function getWeather(city){
     fetch(weatherURL + city + API_KEY)
-    .then(response => response.json())
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error("The city you entered was not found");
+    })
     .then(data => {
         displayWeather(data);
         populateFiveDay(data);
+    })
+    .catch(error => {
+        console.log(error);
+        alert("City not found, please try again!");
     })
 }
 
