@@ -21,6 +21,7 @@ let formattedToday = today.format("M/DD/YYYY");
 //API URLs & Key
 let weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=";
 let fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?";
+let iconURL = "http://openweathermap.org/img/wn/"
 let API_KEY = "&appid=38a8e3005a4683dccd22d2f534217a4a";
 
 //Event Listeners
@@ -65,8 +66,13 @@ function getWeather(city){
 function displayWeather(data){
     let tempInF = ((data.main.temp - 273.15) * 9/5) + 32;
     let tempInC = (data.main.temp - 273.15);
-    
+    let weatherIcon = data.weather[0].icon;
+    let newImg = document.createElement("img");
+    newImg.src = `${iconURL}${weatherIcon}.png`;
+    newImg.title = data.weather[0].description;
+
     _cityAndDate.textContent = `${data.name} ${formattedToday}`;
+    _cityAndDate.appendChild(newImg);
     _cityTemp.textContent = `${tempInF.toFixed(2)}°`;
     _cityWind.textContent = `${data.wind.speed.toFixed(2)}mph`;
     _cityHumidity.textContent = `${data.main.humidity}%`;
@@ -82,6 +88,7 @@ function populateFiveDay(data){
                 _fiveDayCards[i].innerHTML = "";
                 let date = today.add(i + 1, "day").format("MM/DD/YYYY");
                 let weatherIcon = fiveData.list[i].weather[0].icon;
+                let weatherDesc = fiveData.list[i].weather[0].description;
                 let temp = (((fiveData.list[i].main.temp - 273.15) * 9/5) + 32).toFixed(2);
                 let wind = (fiveData.list[i].wind.speed);
                 let humidity = fiveData.list[i].main.humidity;
@@ -90,24 +97,37 @@ function populateFiveDay(data){
                 for(let j = 0; j < htmlArray.length; j++){
                     let newDiv = document.createElement("div");
                     switch(j){
+                        case(0):
+                            newDiv.textContent = htmlArray[j];
+                            newDiv.className = "date-header";
+                            _fiveDayCards[i].append(newDiv);
+                            break;
+                        
+                        case(1):
+                            let newImg = document.createElement("img");
+                            newImg.src = `${iconURL}${weatherIcon}.png`;
+                            newImg.title = weatherDesc;
+                            _fiveDayCards[i].append(newImg);
+                            break;
+
                         case(2):
                             newDiv.textContent = `Temp: ${htmlArray[j]}`;
+                            _fiveDayCards[i].append(newDiv);
                             break;
 
                         case(3):
                             newDiv.textContent = `Wind: ${htmlArray[j]}`;
+                            _fiveDayCards[i].append(newDiv);
                             break;
 
                         case(4):
                             newDiv.textContent = `Humidity: ${htmlArray[j]}`;
+                            _fiveDayCards[i].append(newDiv);
                             break;
 
                         default:
-                            newDiv.textContent = htmlArray[j];
                             break;
                     }
-                    
-                    _fiveDayCards[i].append(newDiv);
                 }
             }
         })

@@ -14,8 +14,8 @@
 }
 
 img, video {
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
 }
 
 body {
@@ -43,7 +43,7 @@ main {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 300px minmax(auto, 800px);
-    grid-template-rows: 150px auto;
+    grid-template-rows: 175px auto;
     grid-template-areas:
                         "ui city-results"
                         "ui five-day"
@@ -94,11 +94,26 @@ main {
 
 #past-searches {
     min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    padding-top: 25px;
+}
+
+#past-searches > div {
+    width: 95%;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 #city-results {
     grid-area: city-results;
-    height: 150px;
+    height: fit-content;
 }
 
 .city-detail {
@@ -109,6 +124,16 @@ main {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
+}
+
+#city-date {
+    display: flex;
+    align-items: center;
+}
+
+#city-date > img{
+    width: 50px;
+    height: 50px;
 }
 
 #five-day {
@@ -125,11 +150,17 @@ main {
     font-weight: bold;
 }
 
+#five-day
+
 .five-day-card {
     height: 175px;
     width: 150px;
     display: flex;
     flex-direction: column;
+}
+
+.date-header {
+    font-size: 1.5rem;
 }
 
 footer{
