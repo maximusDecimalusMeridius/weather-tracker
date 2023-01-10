@@ -27,14 +27,20 @@ let API_KEY = "&appid=38a8e3005a4683dccd22d2f534217a4a";
 //Event Listeners
 _ui.addEventListener("click", (event) => {
     event.preventDefault;
-    //If a new city name is input, display weather stats and 5-day forecast
-    //Add search to search history and local storage
-    if(event.target.id == "submit-button"){
-        getWeather(_searchInput.value);
-        pastSearchArray.push(_searchInput.value);
-        _searchInput.value = "";
-        localStorage.setItem("pastSearches", JSON.stringify(pastSearchArray));
-        populateSearchHistory();
+    if(_searchInput.value != undefined && _searchInput.value != ""){
+        //If a new city name is input, display weather stats and 5-day forecast
+        //Add search to search history and local storage
+        //If search history length == 10, pop() the last value off
+        if(event.target.id == "submit-button"){
+            getWeather(_searchInput.value);
+            pastSearchArray.unshift(_searchInput.value);
+            if(pastSearchArray.length > 10){
+                pastSearchArray.pop();
+            }
+            _searchInput.value = "";
+            localStorage.setItem("pastSearches", JSON.stringify(pastSearchArray));
+            populateSearchHistory();
+        }
     }
     //Search past city but don't add to search history since it already exists
     if(event.target.className == "past-city-search"){
@@ -71,7 +77,7 @@ function displayWeather(data){
     newImg.src = `${iconURL}${weatherIcon}.png`;
     newImg.title = data.weather[0].description;
 
-    _cityAndDate.textContent = `${data.name} ${formattedToday}`;
+    _cityAndDate.textContent = `${data.name} - ${formattedToday}\u00A0\u00A0`;
     _cityAndDate.appendChild(newImg);
     _cityTemp.textContent = `${tempInF.toFixed(2)}°F / ${tempInC.toFixed(2)}°C`;
     _cityWind.textContent = `${data.wind.speed.toFixed(2)}mph`;
