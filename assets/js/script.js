@@ -33,6 +33,9 @@ _ui.addEventListener("click", (event) => {
         localStorage.setItem("pastSearches", JSON.stringify(pastSearchArray));
         populateSearchHistory();
     }
+    if(event.target.className == "past-city-search"){
+        getWeather(event.target.textContent);
+    }
 })
 
 //Local Storage initiatilization
@@ -96,6 +99,7 @@ function populateSearchHistory(){
     for(let i = 0; i < pastSearchArray.length; i++){
         let newDiv = document.createElement("div");
         newDiv.textContent = pastSearchArray[i];
+        newDiv.className = "past-city-search";
         _pastSearchesWindow.append(newDiv);
     }
 }
