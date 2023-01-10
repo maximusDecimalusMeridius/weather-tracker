@@ -125,6 +125,8 @@ main {
 .five-day-card {
     height: 175px;
     width: 150px;
+    display: flex;
+    flex-direction: column;
 }
 
 footer{
