@@ -1,5 +1,5 @@
 :root {
-    --accenuate: rgba(43, 45, 66, 1);
+    --graphite: rgba(43, 45, 66, 1);
     --window: rgba(141, 153, 174, 1);
     --background: rgba(237, 242, 244, 1);
     --mouse-over: rgba(239, 35, 60, 1);
@@ -120,6 +120,9 @@ main {
     gap: 5px;
     justify-content: center;
     align-items: center;
+    background-color: var(--graphite);
+    color: white;
+    font-weight: bold;
 }
 
 .five-day-card {
