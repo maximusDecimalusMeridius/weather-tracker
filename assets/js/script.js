@@ -61,8 +61,8 @@ function getWeather(city){
         throw new Error("The city you entered was not found");
     })
     .then(data => {
-        if(pastSearchArray.find(city => city == _searchInput.value) == undefined){
-            pastSearchArray.unshift(_searchInput.value);
+        if(pastSearchArray.find(city => city == data.name) == undefined){
+            pastSearchArray.unshift(data.name);
             if(pastSearchArray.length > 10){
                 pastSearchArray.pop();
             }

@@ -166,10 +166,6 @@ main {
     border-radius: inherit;
 }
 
-.past-city-search::first-letter {
-    text-transform: uppercase;
-}
-
 #city-results {
     padding: 10px 20px 10px 50px;
     grid-area: city-results;
