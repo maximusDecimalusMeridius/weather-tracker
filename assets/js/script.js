@@ -73,7 +73,7 @@ function displayWeather(data){
 
     _cityAndDate.textContent = `${data.name} ${formattedToday}`;
     _cityAndDate.appendChild(newImg);
-    _cityTemp.textContent = `${tempInF.toFixed(2)}°`;
+    _cityTemp.textContent = `${tempInF.toFixed(2)}°F / ${tempInC.toFixed(2)}°C`;
     _cityWind.textContent = `${data.wind.speed.toFixed(2)}mph`;
     _cityHumidity.textContent = `${data.main.humidity}%`;
 }
@@ -89,7 +89,7 @@ function populateFiveDay(data){
                 let date = today.add(i + 1, "day").format("MM/DD/YYYY");
                 let weatherIcon = fiveData.list[i].weather[0].icon;
                 let weatherDesc = fiveData.list[i].weather[0].description;
-                let temp = (((fiveData.list[i].main.temp - 273.15) * 9/5) + 32).toFixed(2);
+                let temp = [(((fiveData.list[i].main.temp - 273.15) * 9/5) + 32).toFixed(2), (fiveData.list[i].main.temp - 273.15).toFixed(2)];
                 let wind = (fiveData.list[i].wind.speed);
                 let humidity = fiveData.list[i].main.humidity;
                 let htmlArray = [date, weatherIcon, temp, wind, humidity];
@@ -111,17 +111,18 @@ function populateFiveDay(data){
                             break;
 
                         case(2):
-                            newDiv.textContent = `Temp: ${htmlArray[j]}`;
+                            newDiv.textContent = `Temp: ${htmlArray[j][0]}°F
+                            \n\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0${htmlArray[j][1]}°C`;
                             _fiveDayCards[i].append(newDiv);
                             break;
 
                         case(3):
-                            newDiv.textContent = `Wind: ${htmlArray[j]}`;
+                            newDiv.textContent = `Wind: ${htmlArray[j]}mph`;
                             _fiveDayCards[i].append(newDiv);
                             break;
 
                         case(4):
-                            newDiv.textContent = `Humidity: ${htmlArray[j]}`;
+                            newDiv.textContent = `Humidity: ${htmlArray[j]}%`;
                             _fiveDayCards[i].append(newDiv);
                             break;
 
