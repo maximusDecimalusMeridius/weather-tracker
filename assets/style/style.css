@@ -3,7 +3,7 @@
     --window: rgba(141, 153, 174, 1);
     --background: rgba(237, 242, 244, 1);
     --mouse-over: rgba(239, 35, 60, 1);
-    --amaranth-red: rgba(217, 4, 41, 1)(217, 4, 41, 1);
+    --amaranth-red: rgba(217, 4, 41, 1);
 }
 
 *, *::before, *::after {
@@ -39,10 +39,10 @@ header {
 }
 
 main {
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 300px minmax(auto, 800px);
+    grid-template-columns: 300px minmax(auto, 850px);
     grid-template-rows: 175px auto;
     grid-template-areas:
                         "ui city-results"
@@ -87,7 +87,7 @@ main {
 #submit-button {
     height: 2rem;
     width: 95%;
-    background-color: skyblue;
+    background-color: var(--amaranth-red);
     color: white;
     align-self: center;
 }
@@ -142,8 +142,8 @@ main {
     padding: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 5px;
-    justify-content: center;
+    gap: 15px;
+    justify-items: center;
     align-items: center;
     background-color: var(--graphite);
     color: white;
