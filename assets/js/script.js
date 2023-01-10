@@ -21,7 +21,7 @@ let formattedToday = today.format("M/DD/YYYY");
 //API URLs & Key
 let weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=";
 let fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?";
-let iconURL = "http://openweathermap.org/img/wn/"
+let iconURL = "https://openweathermap.org/img/wn/"
 let API_KEY = "&appid=38a8e3005a4683dccd22d2f534217a4a";
 
 //Event Listeners
