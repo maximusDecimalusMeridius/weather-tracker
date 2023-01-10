@@ -31,6 +31,7 @@ _ui.addEventListener("click", (event) => {
         pastSearchArray.push(_searchInput.value);
         _searchInput.value = "";
         localStorage.setItem("pastSearches", JSON.stringify(pastSearchArray));
+        populateSearchHistory();
     }
 })
 
@@ -68,6 +69,7 @@ function populateFiveDay(data){
         .then(response => response.json())
         .then( (fiveData) => {
             for(let i = 0; i < fiveData.list.length; i++){
+                _fiveDayCards[i].innerHTML = "";
                 let date = today.add(i + 1, "day").format("MM/DD/YYYY");
                 let weatherIcon = fiveData.list[i].weather[0].icon;
                 let temp = (((fiveData.list[i].main.temp - 273.15) * 9/5) + 32).toFixed(2);
@@ -86,4 +88,14 @@ function populateFiveDay(data){
                 }
             }
         })
+}
+
+function populateSearchHistory(){
+    _pastSearchesWindow.innerHTML = ""
+    
+    for(let i = 0; i < pastSearchArray.length; i++){
+        let newDiv = document.createElement("div");
+        newDiv.textContent = pastSearchArray[i];
+        _pastSearchesWindow.append(newDiv);
+    }
 }
