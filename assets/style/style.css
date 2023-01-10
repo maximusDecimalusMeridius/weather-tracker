@@ -222,7 +222,7 @@ img{
     color: white;
     padding: 10px 0px 10px 20px;
     gap: 2px;
-    box-shadow: 8px 8px 3px var(--graphite);
+    box-shadow: 8px 8px 3px var(--graphite-see-through);
 }
 
 .date-header {
