@@ -41,6 +41,12 @@ _ui.addEventListener("click", (event) => {
     }
 })
 
+_searchInput.addEventListener("keydown", (event) => {
+    if(event.code == "Enter" || event.code == "Return"){
+        getWeather(_searchInput.value.trim());
+    }
+})
+
 //Local Storage initiatilization
 if(localStorage.getItem("pastSearches") == null){
     localStorage.setItem("pastSearches", "");

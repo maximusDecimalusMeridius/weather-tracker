@@ -6,7 +6,7 @@
     --background: rgba(237, 242, 244, 1);
     --mouseover-red: rgba(239, 35, 60, 1);
     --amaranth-red: rgba(217, 4, 41, 1);
-    --light-amaranth: rgba(217, 4, 41, .5);
+    --light-amaranth: rgba(217, 4, 41);
     --deep-purple: rgb(70, 0, 70);
     --light-purple: rgb(0, 0, 70);
 }
