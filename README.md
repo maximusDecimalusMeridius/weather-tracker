@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a class assignment that required us to build a weather dashboard, query a 3rd party weather API and display the data on the page.  It meets the following acceptance criteria:
+This is a class assignment that required us to build a weather dashboard, query a 3rd party weather API and display the data on the page, then save search history into localStorage.  It meets the following acceptance criteria:
 
 - GIVEN a weather dashboard with form inputs
 
