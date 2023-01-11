@@ -96,9 +96,9 @@ function displayWeather(data){
 
     _cityAndDate.textContent = `${data.name} - ${formattedToday}\u00A0\u00A0`;
     _cityAndDate.appendChild(newImg);
-    _cityTemp.textContent = `${tempInF.toFixed(2)}°F / ${tempInC.toFixed(2)}°C`;
-    _cityWind.textContent = `${data.wind.speed.toFixed(2)}mph`;
-    _cityHumidity.textContent = `${data.main.humidity}%`;
+    _cityTemp.textContent = `\u00A0${tempInF.toFixed(2)}°F / ${tempInC.toFixed(2)}°C`;
+    _cityWind.textContent = `\u00A0${data.wind.speed.toFixed(2)}mph`;
+    _cityHumidity.textContent = `\u00A0${data.main.humidity}%`;
 }
 
 //Displays weather details in 5-day results window
